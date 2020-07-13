@@ -14,14 +14,14 @@ class BotManController extends Controller
      */
     public function handle(Request $request)
     {
-        $slack_id = $request->input('event.user');
-        $user = new User;
-        $user->slack_id = $slack_id;
-        $user->user_name = 'テスト';
-        $user->introduced_count = 0;
-        $user->introduced_last_time = false;
-
-        $user->save();
+//        $slack_id = $request->input('event.user');
+//        $user = new User;
+//        $user->slack_id = $slack_id;
+//        $user->user_name = 'テスト';
+//        $user->introduced_count = 0;
+//        $user->introduced_last_time = false;
+//
+//        $user->save();
 
         $botman = app('botman');
 
