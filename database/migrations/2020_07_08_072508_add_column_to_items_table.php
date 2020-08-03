@@ -33,7 +33,7 @@ class AddColumnToItemsTable extends Migration
     public function down()
     {
         Schema::table('items', function (Blueprint $table) {
-            //
+            $table->dropColumn(['theme_id', 'user_id']);
         });
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateThemeTable extends Migration
+class RenameUserNameColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateThemeTable extends Migration
      */
     public function up()
     {
-        Schema::create('themes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('content');
-            $table->integer('used_count');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->renameColumn('user_name', 'name');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateThemeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('themes');
+        Schema::table('users', function (Blueprint $table) {
+            $table->renameColumn('name', 'user_name');
+        });
     }
 }
