@@ -29,7 +29,8 @@ class AddColumnToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn(['slack_id', 'introduced_count', 'introduced_last_time']);
+            $table->renameColumn('user_name', 'name');
         });
     }
 }
