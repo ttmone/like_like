@@ -34,13 +34,17 @@ http://localhost:8000/botman/tinker にアクセス
 
 
 ## Slack APIの設定
-1. Slack APIで任意のBOTを作成
-2. サーバーを起動
+1. slack-driverのインストール
+    ```
+    $ php artisan botman:install-driver slack
+    ```
+2. Slack APIで任意のBOTを作成
+3. サーバーを起動
     ```
     $ php artisan serve
     ```
-3. ngrokで公開
+4. ngrokで公開
     ```
     $ ngrok http 8000
     ```
-4. events APIで http://~~~~.ngrok.io/botman を設定(~~~~の部分にはランダム文字列が入る)
+5. events APIで http://~~~~.ngrok.io/botman を設定(~~~~の部分にはランダム文字列が入る)
