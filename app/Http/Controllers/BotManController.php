@@ -12,8 +12,17 @@ class BotManController extends Controller
     /**
      * Place your BotMan logic here.
      */
-    public function handle()
+    public function handle(Request $request)
     {
+        // Slackのリクエストが再送された場合、キャンセルする
+        // 参考: https://dev.classmethod.jp/articles/slack-resend-matome/
+        if($request->header('X-Slack-Retry-Num')) {
+            return [
+                'statusCode' => 200,
+                'body' => ['message' => "No need to resend"]
+            ];
+        };
+
         $botman = app('botman');
         $botman->listen();
     }
