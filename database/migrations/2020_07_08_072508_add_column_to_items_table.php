@@ -20,8 +20,8 @@ class AddColumnToItemsTable extends Migration
             $table->unsignedInteger('theme_id');
             $table->foreign('theme_id')->references('id')->on('themes');
             // 簡潔なメソッド、らしいけどエラーで動かず。
-//            $table->foreignId('user_id')->constrained();
-//            $table->foreignId('theme_id')->constrained();
+            // $table->foreign('user_id')->constrained();
+            // $table->foreign('theme_id')->constrained();
         });
     }
 
@@ -32,8 +32,12 @@ class AddColumnToItemsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::table('items', function (Blueprint $table) {
+            $table->dropForeign('items_theme_id_foreign');
+            $table->dropForeign('items_user_id_foreign');
             $table->dropColumn(['theme_id', 'user_id']);
         });
+        Schema::enableForeignKeyConstraints();
     }
 }

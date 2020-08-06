@@ -13,9 +13,13 @@ class RemoveRelationFromItems extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::table('items', function (Blueprint $table) {
+            $table->dropForeign('items_theme_id_foreign');
+            $table->dropForeign('items_user_id_foreign');
             $table->dropColumn(['theme_id', 'user_id']);
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
