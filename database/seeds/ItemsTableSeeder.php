@@ -43,8 +43,6 @@ class ItemsTableSeeder extends Seeder
                     'content' => $item,
                     'user_id' => $userId,
                     'theme_id' => $themeId,
-                    'created_at' => new \Datetime(),
-                    'updated_at' => new \Datetime()
                 ]);
             }
 

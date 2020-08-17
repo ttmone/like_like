@@ -23,8 +23,6 @@ class UsersTableSeeder extends Seeder
             DB::table('users')->insert([
                 'name' => "test$key",
                 'slack_id' => $slackId,
-                'created_at' => new \Datetime(),
-                'updated_at' => new \Datetime()
             ]);
         }
     }
