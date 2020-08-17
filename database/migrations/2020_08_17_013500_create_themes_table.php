@@ -16,7 +16,7 @@ class CreateThemesTable extends Migration
         Schema::create('themes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('content');
-            $table->integer('announced_count');
+            $table->integer('announced_count')->default(0);
         });
     }
 
