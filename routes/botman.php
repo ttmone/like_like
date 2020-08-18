@@ -38,4 +38,9 @@ $botman->hears('好きなもの：{item}', function ($bot, $item_content) {
     $bot->reply("好きなものとして $item_content が追加されました！");
 });
 
+$botman->hears('リマインダー : 紹介', function ($bot) {
+    SlackChat::postMessage(env('CHANNEL_ID'), 'これはユーザーのアイテム紹介用のダミーテキストです');
+    return;
+});
+
 $botman->hears('Start conversation', BotManController::class.'@startConversation');
